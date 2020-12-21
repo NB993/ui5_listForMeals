@@ -83,6 +83,9 @@ sap.ui.define([
                 }
             });
             this.getView().setModel(oModel);
+
+            var oRestaurantModel = this.getOwnerComponent().getModel("restaurantList");
+            this.getView().setModel(oRestaurantModel, "restaurantList");
         }
     });
 });
