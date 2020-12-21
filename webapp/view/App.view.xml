@@ -1,0 +1,94 @@
+<mvc:View controllerName="sap.ui.demo.lunchList.controller.App"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:mvc="sap.ui.core.mvc" 
+    displayBlock="true">
+    <Shell class="sapUiSizeCompact" >
+        <App id="app">
+            <Page  title="{i18n>pageTitle}">
+                <content>
+                    <Table
+                        id="table01"
+                        items="{restaurantList>/list}">
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <SegmentedButton selectedKey="{/header/selectedPlace}" selectionChange=".onFilter">
+                                    <items>
+                                        <SegmentedButtonItem text="{i18n>segmentedBtnOutside}" key="outside"/>
+                                        <SegmentedButtonItem text="{i18n>segmentedBtnInside}" key="inside"/>
+                                        <SegmentedButtonItem text="{i18n>segmentedBtnAnywhere}" key="anywhere"/>
+                                    </items>
+                                </SegmentedButton>
+                                <HBox>
+                                    <CheckBox text="{i18n>checkBoxKoreanDish}" select=".onFilter"
+                                        selected="{/header/country/korea}">
+                                        <customData>
+                                            <core:CustomData key="country" value="korea"/>
+                                        </customData>
+                                    </CheckBox>
+                                    
+                                    <CheckBox text="{i18n>checkBoxChineseDish}" select=".onFilter"
+                                        selected="{/header/country/china}">
+                                        <customData>
+                                            <core:CustomData key="country" value="china"/>
+                                        </customData>
+                                    </CheckBox>
+                                    <CheckBox text="{i18n>checkBoxJapaneseDish}" select=".onFilter"
+                                        selected="{/header/country/japan}">
+                                        <customData>
+                                            <core:CustomData key="country" value="japan"/>
+                                        </customData>
+                                    </CheckBox>
+                                    <CheckBox text="{i18n>checkBoxWesternDish}" select=".onFilter"
+                                        selected="{/header/country/western}">
+                                        <customData>
+                                            <core:CustomData key="country" value="wetern"/>
+                                        </customData>
+                                    </CheckBox>
+                                </HBox>
+                                <ToolbarSpacer/>
+                                <SearchField width="auto" liveChange=".onFilter" search=".onFilter"/>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>
+                                <Text text="{i18n>colHeaderName}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>colHeaderPrice}"/>
+                            </Column>
+                            <Column
+                                visible="{=${/header/selectedPlace} === 'anywhere'? true : false}">
+                                <Text text="{i18n>colHeaderPlace}"/>
+                            </Column>
+                        </columns>
+                        <items>
+                            <ColumnListItem>
+                                <cells>
+                                    <ObjectIdentifier
+                                        text="{restaurantList>Name}"/>
+                                    <ObjectNumber
+                                        number="{
+                                            parts: [
+                                                {path: 'restaurantList>Price'},
+                                                {path: '/currency'}
+                                            ],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions: {
+                                                showMeasure: false
+                                            }
+                                        }"
+                                        />
+                                    <Text text="{
+                                        path: 'restaurantList>Place',
+                                        formatter: '.placeFormatting'
+                                        }"/>
+                                </cells>
+                            </ColumnListItem>
+                        </items>
+                    </Table>
+                </content>
+            </Page>
+        </App>
+    </Shell>
+</mvc:View>
