@@ -9,7 +9,7 @@
                 <content>
                     <Table
                         id="table01"
-                        items="{restaurantList>/list}">
+                        items="{mealList>/list}">
                         <headerToolbar>
                             <OverflowToolbar>
                                 <SegmentedButton selectedKey="{/header/selectedPlace}" selectionChange=".onFilter">
@@ -66,11 +66,11 @@
                             <ColumnListItem>
                                 <cells>
                                     <ObjectIdentifier
-                                        text="{restaurantList>Name}"/>
+                                        text="{mealList>Name}"/>
                                     <ObjectNumber
                                         number="{
                                             parts: [
-                                                {path: 'restaurantList>Price'},
+                                                {path: 'mealList>Price'},
                                                 {path: '/currency'}
                                             ],
                                             type: 'sap.ui.model.type.Currency',
@@ -80,7 +80,7 @@
                                         }"
                                         />
                                     <Text text="{
-                                        path: 'restaurantList>Place',
+                                        path: 'mealList>Place',
                                         formatter: '.placeFormatting'
                                         }"/>
                                 </cells>

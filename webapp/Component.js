@@ -1,6 +1,6 @@
 sap.ui.define([
     "sap/ui/core/UIComponent",
-    "sap/ui/demo/lunchList/model/models",
+    "sap/ui/demo/lunchList/model/models"
 ], function (UIComponent, models) {
     "use strict";
     return UIComponent.extend("sap.ui.demo.lunchList.Component", {
@@ -12,7 +12,7 @@ sap.ui.define([
             UIComponent.prototype.init.apply(this, arguments);
 
             // list model setting
-            this.setModel(models.createModel(), "restaurantList");
+            this.setModel(models.createMealModel(), "mealList");
         },
         exit: function () {
         }
