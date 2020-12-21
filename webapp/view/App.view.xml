@@ -9,7 +9,14 @@
                 <content>
                     <Table
                         id="table01"
-                        items="{mealList>/list}">
+                        items="{
+                            path: 'mealList>/list',
+                            sorter : {
+                                    path : 'Country',
+                                    group : '.getCountry'
+                                },
+                            groupHeaderFactory : '.getGroupHeader'
+                        }">
                         <headerToolbar>
                             <OverflowToolbar>
                                 <SegmentedButton selectedKey="{/header/selectedPlace}" selectionChange=".onFilter">

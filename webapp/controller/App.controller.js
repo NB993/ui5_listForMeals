@@ -2,18 +2,14 @@ sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/model/json/JSONModel",
     "sap/ui/model/Filter",
-    "sap/ui/model/FilterOperator"
-], function (Controller, JSONModel, Filter, FilterOperator) {
+    "sap/ui/model/FilterOperator",
+    "sap/m/GroupHeaderListItem"
+], function (Controller, JSONModel, Filter, FilterOperator, GroupHeaderListItem) {
     "use strict"
 
     return Controller.extend("sap.ui.demo.lunchList.App", {
         onInit: function() {
             this._pFnInitModel();
-        },
-
-        onPressSegBtn : function(oEvent) {
-            
-            this.onFilter(oEvent);
         },
 
         onFilter : function(oEvent) {
@@ -67,6 +63,14 @@ sap.ui.define([
                     return oResourceBundle.getText("colBothAvailable");
             }
             
+        },
+        getCountry : function(oContext) {
+            return oContext.getProperty("Country");
+        },
+        getGroupHeader : function(oGroup) {
+            return new GroupHeaderListItem({
+                title : oGroup.key
+            });
         },
 
         _pFnInitModel : function() {
