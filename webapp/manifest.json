@@ -79,7 +79,7 @@
             },
             "restaurantList" : {
                 "type": "sap.ui.model.json.JSONModel",
-                "uri": "../model/restaurantList.json"
+                "uri": "sap.ui.demo.lunchList.model.restaurantList.json"
             },
             "": {
                 "dataSource": "<dataSourceAlias>",
